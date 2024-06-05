@@ -5,7 +5,7 @@ export const checkExistingUser = async (req, res, next) => {
   try {
     const userFound = await User.findOne({ username: req.body.username });
     if (userFound)
-      return res.status(400).json({ message: "The user already exists" });
+      return res.status(400).json({ message: "The user already exists please Login" });
 
     const email = await User.findOne({ email: req.body.email });
     if (email)
@@ -18,7 +18,7 @@ export const checkExistingUser = async (req, res, next) => {
 };
 
 export const checkExistingRole = (req, res, next) => {
-  req.body.roles.find();
+   const role = req.body.roles;
 
   if (!req.body.roles) return res.status(400).json({ message: "No roles" });
 

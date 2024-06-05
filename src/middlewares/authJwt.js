@@ -6,6 +6,8 @@ import Role from "../models/Role.js";
 export const verifyToken = async (req, res, next) => {
   let token = req.headers["x-access-token"];
 
+  console.log('token: ', token);
+
   if (!token) return res.status(403).json({ message: "No token provided" });
 
   try {

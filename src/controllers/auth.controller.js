@@ -5,11 +5,12 @@ import { SECRET } from "../config.js";
 
 export const signupHandler = async (req, res) => {
   try {
-    const { username, email, password, roles } = req.body;
+    const { name, email, password, roles } = req.body;
 
     // Creating a new User Object
     const newUser = new User({
-      username,
+      name,
+      Companyname,
       email,
       password,
     });
@@ -40,7 +41,7 @@ export const signupHandler = async (req, res) => {
 export const signinHandler = async (req, res) => {
   try {
     // Request body email can be an email or username
-    const userFound = await User.findOne({ email: req.body.email }).populate(
+    const userFound = await User.findOne({ username: req.body.username }).populate(
       "roles"
     );
 

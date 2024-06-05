@@ -32,6 +32,8 @@ export const createAdmin = async () => {
   // get roles _id
   const roles = await Role.find({ name: { $in: ["admin", "moderator"] } });
 
+  console.log('roles list : ', roles);
+  
   // create a new admin user
   const newUser = await User.create({
     username: ADMIN_USERNAME,
